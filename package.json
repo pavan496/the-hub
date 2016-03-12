@@ -1,0 +1,28 @@
+{
+  "name": "the-hub",
+  "version": "0.0.1",
+  "description": "Employee Portal built on MEAN Stack and TypeScript",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node ./src/www.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavan496/the-hub.git"
+  },
+  "author": "Pavan Andhukuri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pavan496/the-hub/issues"
+  },
+  "homepage": "https://github.com/pavan496/the-hub#readme",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-material": "^1.0.6",
+    "body-parser": "^1.15.0",
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  }
+}
