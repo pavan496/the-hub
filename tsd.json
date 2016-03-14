@@ -19,6 +19,12 @@
     },
     "morgan/morgan.d.ts": {
       "commit": "d22516f9f089de107d7e7d5938566377370631f6"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "0cd5f0a1482dc3149f5446b1d885ef6ac7c57720"
+    },
+    "angularjs/angular-route.d.ts": {
+      "commit": "0cd5f0a1482dc3149f5446b1d885ef6ac7c57720"
     }
   }
 }

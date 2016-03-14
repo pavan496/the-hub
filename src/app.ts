@@ -13,8 +13,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
 //Configure static HTML components to be served directly by express.
-app.use('/', express.static(join(__dirname, 'public')));
+app.use('/', express.static(join(__dirname, 'client')));
 app.use('/angular', express.static(join(__dirname, '../node_modules/angular')));
+app.use('/angular', express.static(join(__dirname, '../node_modules/angular-route')));
 app.use('/angular', express.static(join(__dirname, '../node_modules/angular-material')));
 
 // catch 404 and forward to error handler
