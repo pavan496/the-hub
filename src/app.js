@@ -13,6 +13,9 @@ app.use('/', express.static(path_1.join(__dirname, 'client')));
 app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular')));
 app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-route')));
 app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-material')));
+app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-animate')));
+app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-aria')));
+app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-messages')));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

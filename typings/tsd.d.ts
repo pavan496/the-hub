@@ -6,3 +6,4 @@
 /// <reference path="morgan/morgan.d.ts" />
 /// <reference path="angularjs/angular.d.ts" />
 /// <reference path="angularjs/angular-route.d.ts" />
+/// <reference path="angular-material/angular-material.d.ts" />
