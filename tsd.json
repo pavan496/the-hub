@@ -28,6 +28,21 @@
     },
     "angular-material/angular-material.d.ts": {
       "commit": "0cd5f0a1482dc3149f5446b1d885ef6ac7c57720"
+    },
+    "passport/passport.d.ts": {
+      "commit": "89f1449d19aa1010f61dd8c7a44502bed42da678"
+    },
+    "passport-local/passport-local.d.ts": {
+      "commit": "89f1449d19aa1010f61dd8c7a44502bed42da678"
+    },
+    "cookie-parser/cookie-parser.d.ts": {
+      "commit": "89f1449d19aa1010f61dd8c7a44502bed42da678"
+    },
+    "express-session/express-session.d.ts": {
+      "commit": "89f1449d19aa1010f61dd8c7a44502bed42da678"
+    },
+    "winston/winston.d.ts": {
+      "commit": "cc3d223a946f661eff871787edeb0fcb8f0db156"
     }
   }
 }
