@@ -38,3 +38,9 @@
 }
 
 /* Material Design Icon Setup - End */
+
+/* Sidenav style - Start */
+.md-sidenav-left {
+    height: 100%;
+}
+/* Sidenav style - End */

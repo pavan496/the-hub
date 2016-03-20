@@ -4,11 +4,20 @@ module TheHub {
     //Function to configure routes
     function routes($routeProvider: ng.route.IRouteProvider) {
 
+        let accessResolver = ['UserFactory', (UserFactory: any) => {
+            return UserFactory.isAuthenticated();
+        }];
+
         //Configuring routes
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
             controller: 'HomeController',
-            controllerAs: 'home'
+            controllerAs: 'homeCtrl',
+            resolve: accessResolver
+        }).when('/login', {
+            templateUrl: '/views/login.html',
+            controller: 'LoginController',
+            controllerAs: 'loginCtrl'
         }).otherwise({
             redirectTo: '/'
         });

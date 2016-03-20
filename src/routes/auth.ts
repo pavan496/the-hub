@@ -13,7 +13,6 @@ export function setup(router: express.Router): express.Router {
         console.log(username);
 
         if (username == 'pavan' && password == 'pavan') {
-            console.debug('Authentication successful.');
             done(null, { 'username': 'pavan' });
         } else {
             done(null, false);
@@ -28,8 +27,16 @@ export function setup(router: express.Router): express.Router {
         done(null, id);
     });
 
+    function requireLogin(req: any, res: express.Response, next: express.NextFunction) {
+        if (req.session.loggedIn) {
+            next();
+        } else {
+            next({ 'status': 'unauthorized' });
+        }
+    }
+
     logger.info('Setting up authorization for all URLs starting with /secure');
-    router.all('/secure/*', function(req: express.Request, res: express.Response, next: express.NextFunction) {
+    router.all('/secure/*', requireLogin, function(req: express.Request, res: express.Response, next: express.NextFunction) {
         next();
     });
 

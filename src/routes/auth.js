@@ -8,7 +8,6 @@ function setup(router) {
         logger.debug('Authenticating user:%s', username);
         console.log(username);
         if (username == 'pavan' && password == 'pavan') {
-            console.log('sdfsdf');
             done(null, { 'username': 'pavan' });
         }
         else {
@@ -21,8 +20,16 @@ function setup(router) {
     passport.deserializeUser(function (id, done) {
         done(null, id);
     });
+    function requireLogin(req, res, next) {
+        if (req.session.loggedIn) {
+            next();
+        }
+        else {
+            next({ 'status': 'unauthorized' });
+        }
+    }
     logger.info('Setting up authorization for all URLs starting with /secure');
-    router.all('/secure/*', function (req, res, next) {
+    router.all('/secure/*', requireLogin, function (req, res, next) {
         next();
     });
     logger.info('Configuring post handler for /login');

@@ -1,11 +1,8 @@
 var TheHub;
 (function (TheHub) {
     var HomeController = (function () {
-        function HomeController(userService) {
-            this.userService = userService;
-            this.user = this.userService.getDetails();
+        function HomeController() {
         }
-        HomeController.$inject = ['UserService'];
         return HomeController;
     })();
     TheHub.HomeController = HomeController;

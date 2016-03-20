@@ -2,6 +2,7 @@
  * Parent controller
  * 
  */
+
 module TheHub {
     export class AppController {
 
