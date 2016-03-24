@@ -1,4 +1,4 @@
-import {RootScopeExt} from '../models/root.scope'
+import {RootScopeExt} from '../models/client/root.scope'
 "use strict";
 
 module TheHub {
@@ -17,7 +17,7 @@ module TheHub {
          * Route change errors are triggered when the resolve promise in route configuration gets rejected.
          */
         $rootScope.$on("$routeChangeError", () => {
-            $location.url('/login?redirect=' + $location.url());
+            $location.url('/login?continue=' + $location.url());
         });
 
         let getToastPosition = (): string => {

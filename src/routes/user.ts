@@ -7,8 +7,8 @@ import * as logger from 'winston';
 export function setup(router: express.Router) {
 
     logger.info('Setting up request mapping for for user');
-    router.get('/secure/user', (req: express.Request, res: express.Response) => {
-        res.json({ 'status': 'success' });
+    router.get('/secure/user', (req: any, res: express.Response) => {
+        res.json(req.session.passport.user);
     });
 
     return router;

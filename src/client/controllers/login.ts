@@ -1,4 +1,5 @@
-import {RootScopeExt} from '../../models/root.scope';
+import {RootScopeExt} from '../../models/client/root.scope';
+import {IRouteParams} from '../../models/client/route.params';
 
 module TheHub {
     /**
@@ -8,8 +9,8 @@ module TheHub {
 
         loginBtnEnabled: boolean = true;
 
-        static $inject = ['$http', '$rootScope', '$location'];
-        constructor(private $http: ng.IHttpService, private $rootScope: RootScopeExt, private $location: ng.ILocationService) {
+        static $inject = ['$http', '$rootScope', '$location', '$routeParams'];
+        constructor(private $http: ng.IHttpService, private $rootScope: RootScopeExt, private $location: ng.ILocationService, private $routeParams: IRouteParams) {
         }
 
         /**
@@ -18,10 +19,22 @@ module TheHub {
         login(user: {}) {
             this.loginBtnEnabled = false;
             this.$http.post('/login', user).then((value: ng.IHttpPromiseCallbackArg<{}>) => {
-                this.$rootScope.auth = { isAuthenticated: true, isAuthenticationChecked: true };
-                this.$location.url('/');
+
+                this.$rootScope.auth = {
+                    isAuthenticated: true,
+                    isAuthenticationChecked: true,
+                    user: value.data
+                };
+
+                this.$location.url(this.$routeParams.continue ? this.$routeParams.continue : '/');
             }, (error: any) => {
-                this.$rootScope.auth = { isAuthenticated: false, isAuthenticationChecked: true };
+
+                this.$rootScope.auth = {
+                    isAuthenticated: false,
+                    isAuthenticationChecked: true,
+                    user: null
+                };
+
                 this.$rootScope.showToast('Invalid Username/Password combination!');
                 this.loginBtnEnabled = true;
             });

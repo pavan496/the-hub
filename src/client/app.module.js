@@ -13,7 +13,7 @@ var TheHub;
          * Route change errors are triggered when the resolve promise in route configuration gets rejected.
          */
         $rootScope.$on("$routeChangeError", function () {
-            $location.url('/login?redirect=' + $location.url());
+            $location.url('/login?continue=' + $location.url());
         });
         var getToastPosition = function () {
             return Object.keys(toastPosition)

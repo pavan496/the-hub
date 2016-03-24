@@ -15,7 +15,11 @@ function setup(router) {
         console.log(username);
         //TODO: To be changed to authenticate with mongo.
         if (username == 'pavan' && password == 'pavan') {
-            done(null, { 'username': 'pavan' });
+            var userDetails = {
+                username: 'pavan',
+                name: 'Pavan Andhukuri'
+            };
+            done(null, userDetails);
         }
         else {
             done(null, false);
@@ -30,14 +34,14 @@ function setup(router) {
     /**
      * Function called to deserialize user. This user is appended with every request.
      */
-    passport.deserializeUser(function (id, done) {
-        done(null, id);
+    passport.deserializeUser(function (user, done) {
+        done(null, user);
     });
     /**
      * Function to check if the user is logged in.
      */
     function requireLogin(req, res, next) {
-        if (req.session.loggedIn) {
+        if (req.session.passport.user.username) {
             next();
         }
         else {
@@ -56,7 +60,15 @@ function setup(router) {
      */
     logger.info('Configuring post handler for /login');
     router.post('/login', passport.authenticate('local'), function (req, res) {
-        res.json(req.body);
+        res.json(req.session.passport.user);
+    });
+    /**
+     * Logout handler to clear the session
+     */
+    logger.info('Configuring get handler for /logout');
+    router.get('/logout', function (req, res) {
+        req.logout();
+        res.json({ 'status': 'success' });
     });
     return router;
 }

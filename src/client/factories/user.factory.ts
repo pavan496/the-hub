@@ -1,4 +1,4 @@
-import {RootScopeExt} from '../../models/root.scope';
+import {RootScopeExt} from '../../models/client/root.scope';
 
 module TheHub {
     export interface IUserFactory {
@@ -37,12 +37,12 @@ module TheHub {
                 this.$http.get('secure/user').then(
                     (response: ng.IHttpPromiseCallbackArg<{}>) => {
                         //User is logged in. Setup authenticated status. 
-                        this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: true };
+                        this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: true, user: response.data };
                         deferred.resolve('OK');
                     },
                     (error: any) => {
                         //User is not logged in. Reject the promise.
-                        this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: false };
+                        this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: false, user: null };
                         deferred.reject('Unauthorized');
                     });
             }

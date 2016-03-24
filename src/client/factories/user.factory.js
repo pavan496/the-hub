@@ -32,11 +32,11 @@ var TheHub;
                 //Make a GET call to /secure/user to check if the user is logged in and a session cookie is present. 
                 this.$http.get('secure/user').then(function (response) {
                     //User is logged in. Setup authenticated status. 
-                    _this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: true };
+                    _this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: true, user: response.data };
                     deferred.resolve('OK');
                 }, function (error) {
                     //User is not logged in. Reject the promise.
-                    _this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: false };
+                    _this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: false, user: null };
                     deferred.reject('Unauthorized');
                 });
             }

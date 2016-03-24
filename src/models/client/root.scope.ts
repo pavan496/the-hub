@@ -12,6 +12,10 @@ export interface RootScopeExt extends ng.IRootScopeService {
  * Class holding authentication information
  */
 class Auth {
+    //Status of authentication
     isAuthenticated: boolean;
     isAuthenticationChecked: boolean;
+
+    //User Details
+    user: any;
 }

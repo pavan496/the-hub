@@ -4,10 +4,11 @@ var TheHub;
      * Login page controller.
      */
     var LoginController = (function () {
-        function LoginController($http, $rootScope, $location) {
+        function LoginController($http, $rootScope, $location, $routeParams) {
             this.$http = $http;
             this.$rootScope = $rootScope;
             this.$location = $location;
+            this.$routeParams = $routeParams;
             this.loginBtnEnabled = true;
         }
         /**
@@ -17,15 +18,23 @@ var TheHub;
             var _this = this;
             this.loginBtnEnabled = false;
             this.$http.post('/login', user).then(function (value) {
-                _this.$rootScope.auth = { isAuthenticated: true, isAuthenticationChecked: true };
-                _this.$location.url('/');
+                _this.$rootScope.auth = {
+                    isAuthenticated: true,
+                    isAuthenticationChecked: true,
+                    user: value.data
+                };
+                _this.$location.url(_this.$routeParams.continue ? _this.$routeParams.continue : '/');
             }, function (error) {
-                _this.$rootScope.auth = { isAuthenticated: false, isAuthenticationChecked: true };
+                _this.$rootScope.auth = {
+                    isAuthenticated: false,
+                    isAuthenticationChecked: true,
+                    user: null
+                };
                 _this.$rootScope.showToast('Invalid Username/Password combination!');
                 _this.loginBtnEnabled = true;
             });
         };
-        LoginController.$inject = ['$http', '$rootScope', '$location'];
+        LoginController.$inject = ['$http', '$rootScope', '$location', '$routeParams'];
         return LoginController;
     })();
     TheHub.LoginController = LoginController;

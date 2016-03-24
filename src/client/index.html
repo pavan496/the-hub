@@ -3,24 +3,53 @@
 <head>
     <link href="angular/angular-material.min.css" rel="stylesheet" />
     <link href="views/stylesheets/default.css" rel="stylesheet" />
+    <title>The Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body ng-app="TheHub">
-    <div id="sideNavContainer" ng-controller="AppController as ctrl" layout="column" ng-cloak layout-fill>
+    <div id="sideNavContainer" ng-controller="AppController as appCtrl" layout="column" ng-cloak layout-fill>
         <md-toolbar flex="none">
             <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" ng-show="auth.isAuthenticated" hide-gt-md ng-click="ctrl.openLeftMenu()">
+                <md-button class="md-icon-button" ng-show="auth.isAuthenticated" hide-gt-md ng-click="appCtrl.openLeftMenu()">
                     <i class="material-icons">menu</i>
                 </md-button>
                 The Hub
                 <span flex></span>
+                <md-menu ng-show="auth.isAuthenticated" md-position-mode="target-right target">
+                    <md-button ng-click="$mdOpenMenu($event)">
+                        {{auth.user.name}}
+                    </md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button>
+                                <div layout="row" flex>
+                                    <p flex>My Profile</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button>
+                                <div layout="row" flex>
+                                    <p flex>Account Settings</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="appCtrl.logout()">
+                                <div layout="row" flex>
+                                    <p flex>Logout</p>
+                                </div>
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </div>
         </md-toolbar>
         <md-content flex layout="row">
             <md-sidenav ng-show="auth.isAuthenticated" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"
             md-disable-backdrop md-whiteframe="4" flex="none">
                 <md-content layout-padding>
-
                 </md-content>
             </md-sidenav>
             <div ng-view flex="grow"></div>
