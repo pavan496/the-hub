@@ -1,9 +1,7 @@
-/**
- * Parent controller
- * 
- */
-
 module TheHub {
+    /**
+     * Root controller.
+     */
     export class AppController {
 
         static $inject = ['$mdSidenav'];
@@ -11,6 +9,9 @@ module TheHub {
         constructor(private $mdSidenav: angular.material.ISidenavService) {
         }
 
+        /**
+         * Handler for button click to show/hide left menu.
+         */
         openLeftMenu = () => {
             this.$mdSidenav('left').toggle();
         }

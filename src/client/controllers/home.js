@@ -1,5 +1,8 @@
 var TheHub;
 (function (TheHub) {
+    /**
+     * Home page controller.
+     */
     var HomeController = (function () {
         function HomeController() {
         }

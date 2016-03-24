@@ -39,8 +39,12 @@
 
 /* Material Design Icon Setup - End */
 
-/* Sidenav style - Start */
-.md-sidenav-left {
-    height: 100%;
+/* Login - Start */
+.login{
+    padding-top:100px;
 }
-/* Sidenav style - End */
+
+.login md-input-container{
+    margin:8px 0px;
+} 
+/* Login - End */

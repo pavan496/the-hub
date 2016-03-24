@@ -1,15 +1,26 @@
 var TheHub;
 (function (TheHub) {
+    /**
+     * User Factory definition. Contains methods related to User login status.
+     */
     var UserFactory = (function () {
         function UserFactory($http, $q, $rootScope) {
             this.$http = $http;
             this.$q = $q;
             this.$rootScope = $rootScope;
         }
+        /**
+         * Checks if the user is authenticated.
+         * If authentication is already checked once, then the status of authentication will be returned.
+         * Else, a service will be fired to check if the user is already logged in.
+         */
         UserFactory.prototype.isAuthenticated = function () {
             var _this = this;
+            //Create an instance of deferred
             var deferred = this.$q.defer();
+            //Check if authentication is already checked.
             if (this.$rootScope.auth && this.$rootScope.auth.isAuthenticationChecked) {
+                //Check and return the authentication status.
                 if (this.$rootScope.auth.isAuthenticated) {
                     deferred.resolve('OK');
                 }
@@ -18,18 +29,14 @@ var TheHub;
                 }
             }
             else {
+                //Make a GET call to /secure/user to check if the user is logged in and a session cookie is present. 
                 this.$http.get('secure/user').then(function (response) {
-                    if (!_this.$rootScope.auth) {
-                        _this.$rootScope.auth = {};
-                    }
-                    _this.$rootScope.auth.isAuthenticationChecked = true;
-                    _this.$rootScope.auth.isAuthenticated = true;
+                    //User is logged in. Setup authenticated status. 
+                    _this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: true };
                     deferred.resolve('OK');
                 }, function (error) {
-                    if (!_this.$rootScope.auth) {
-                        _this.$rootScope.auth = {};
-                    }
-                    _this.$rootScope.auth.isAuthenticationChecked = true;
+                    //User is not logged in. Reject the promise.
+                    _this.$rootScope.auth = { isAuthenticationChecked: true, isAuthenticated: false };
                     deferred.reject('Unauthorized');
                 });
             }

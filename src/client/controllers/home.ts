@@ -1,4 +1,7 @@
 module TheHub {
+    /**
+     * Home page controller.
+     */
     export class HomeController {
         
     }

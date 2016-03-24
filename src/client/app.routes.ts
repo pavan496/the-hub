@@ -4,6 +4,9 @@ module TheHub {
     //Function to configure routes
     function routes($routeProvider: ng.route.IRouteProvider) {
 
+        /**
+         * Resolver checks if the user is authenticated.
+         */
         let accessResolver = ['UserFactory', (UserFactory: any) => {
             return UserFactory.isAuthenticated();
         }];

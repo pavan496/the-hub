@@ -1,1 +1,28 @@
-<md-subheader>Login</md-subheader>
+<div layout="row" layout-align="center center" class="login">
+    <md-whiteframe class="md-whiteframe-2dp" layout-padding>
+        <md-content flex layout-padding>
+            <p>
+                Please login with your account details to proceed.
+            </p>
+            <form ng-submit="loginForm.$valid && loginCtrl.login(loginCtrl.user)" name="loginForm" novalidate>
+                <div layout="column" layout-padding>
+                    <md-input-container>
+                        <label>Username</label>
+                        <input ng-model="loginCtrl.user.username" name="username" required>
+                        <div ng-messages="loginForm.username.$error">
+                            <div ng-message="required">Username is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Password</label>
+                        <input ng-model="loginCtrl.user.password" type="password" name="password" required>
+                        <div ng-messages="loginForm.password.$error">
+                            <div ng-message="required">Password is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-button type="submit" name="submitBtn" class="md-raised md-primary" ng-disabled="!loginCtrl.loginBtnEnabled">Login</md-button>
+                </div>
+            </form>
+        </md-content>
+    </md-whiteframe>
+</div>

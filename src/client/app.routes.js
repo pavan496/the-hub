@@ -3,6 +3,9 @@ var TheHub;
     "use strict";
     //Function to configure routes
     function routes($routeProvider) {
+        /**
+         * Resolver checks if the user is authenticated.
+         */
         var accessResolver = ['UserFactory', function (UserFactory) {
                 return UserFactory.isAuthenticated();
             }];
