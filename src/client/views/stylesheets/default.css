@@ -1,3 +1,6 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
 /* Material Design Icon Setup - Begin */
 
 @font-face {
@@ -48,3 +51,18 @@
     margin:8px 0px;
 } 
 /* Login - End */
+
+/* Sidebar - Start*/
+md-sidenav md-list{
+    padding: 0px;
+}
+
+md-sidenav {
+    width:250px;
+}
+
+md-sidenav .active{
+    background-color:#6a81f7;
+    color:#FFFFFF;
+}
+/* Sidebar - End */

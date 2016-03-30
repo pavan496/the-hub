@@ -10,6 +10,7 @@ var TheHub;
             this.$http = $http;
             this.$rootScope = $rootScope;
             this.$location = $location;
+            this.menuItems = new Array();
             /**
              * Handler for button click to show/hide left menu.
              */
@@ -31,6 +32,19 @@ var TheHub;
                     _this.$rootScope.showToast('Something wrong. Unable to log you out!');
                 });
             };
+            this.navigateTo = function (url) {
+                _this.$location.url(url);
+            };
+            this.isItemActive = function (url) {
+                if (_this.$location.url() == url) {
+                    return 'active';
+                }
+                else {
+                    return '';
+                }
+            };
+            this.menuItems.push({ displayName: 'Employee Directory', url: '/directory' });
+            this.menuItems.push({ displayName: 'Blog', url: '/blog' });
         }
         AppController.$inject = ['$mdSidenav', '$http', '$rootScope', '$location'];
         return AppController;

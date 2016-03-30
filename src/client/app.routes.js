@@ -19,6 +19,11 @@ var TheHub;
             templateUrl: '/views/login.html',
             controller: 'LoginController',
             controllerAs: 'loginCtrl'
+        }).when('/directory', {
+            templateUrl: '/views/directory.html',
+            controller: 'DirectoryController',
+            controllerAs: 'dirCtrl',
+            resolve: accessResolver
         }).otherwise({
             redirectTo: '/'
         });

@@ -9,14 +9,14 @@
 
 <body ng-app="TheHub">
     <div id="sideNavContainer" ng-controller="AppController as appCtrl" layout="column" ng-cloak layout-fill>
-        <md-toolbar flex="none">
+        <md-toolbar flex="none" ng-cloak>
             <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" ng-show="auth.isAuthenticated" hide-gt-md ng-click="appCtrl.openLeftMenu()">
+                <md-button class="md-icon-button" ng-show="auth.isAuthenticated" hide-gt-sm ng-click="appCtrl.openLeftMenu()">
                     <i class="material-icons">menu</i>
                 </md-button>
                 The Hub
                 <span flex></span>
-                <md-menu ng-show="auth.isAuthenticated" md-position-mode="target-right target">
+                <md-menu ng-show="auth.isAuthenticated" md-position-mode="target-right target" ng-cloak>
                     <md-button ng-click="$mdOpenMenu($event)">
                         {{auth.user.name}}
                     </md-button>
@@ -47,12 +47,17 @@
             </div>
         </md-toolbar>
         <md-content flex layout="row">
-            <md-sidenav ng-show="auth.isAuthenticated" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"
-            md-disable-backdrop md-whiteframe="4" flex="none">
-                <md-content layout-padding>
+            <md-sidenav ng-show="auth.isAuthenticated" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')"
+            md-disable-backdrop md-whiteframe="4" flex="none" ng-cloak>
+                <md-content layout="column">
+                    <md-list ng-repeat="item in appCtrl.menuItems">
+                        <md-list-item ng-click="appCtrl.navigateTo(item.url)" ng-class="appCtrl.isItemActive(item.url)">
+                            <p>{{item.displayName}}</p>
+                        </md-list-item>
+                    </md-list>
                 </md-content>
             </md-sidenav>
-            <div ng-view flex="grow"></div>
+            <div ng-view flex></div>
         </md-content>
     </div>
 
@@ -68,6 +73,7 @@
     <script src="controllers/app.js" type="text/javascript"></script>
     <script src="controllers/home.js" type="text/javascript"></script>
     <script src="controllers/login.js" type="text/javascript"></script>
+    <script src="controllers/directory.js" type="text/javascript"></script>
 
 </body>
 

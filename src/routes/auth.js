@@ -67,6 +67,7 @@ function setup(router) {
      */
     logger.info('Configuring get handler for /logout');
     router.get('/logout', function (req, res) {
+        logger.debug('Logging out user');
         req.logout();
         res.json({ 'status': 'success' });
     });
