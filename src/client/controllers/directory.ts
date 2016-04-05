@@ -7,11 +7,11 @@ module TheHub {
     export class DirectoryController {
 
         employees: Array<Employee> = new Array<Employee>();
+        selectedEmployee: Employee;
 
         static $inject = ['$http']
 
         constructor(private $http: ng.IHttpService) {
-            debugger;
             this.loadEmployees();
         }
 
@@ -22,6 +22,10 @@ module TheHub {
             }, (error: any) => {
 
             });
+        }
+
+        showEmployee = (employee: Employee) => {
+            this.selectedEmployee = employee;
         }
     }
 

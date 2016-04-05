@@ -22,7 +22,7 @@ function setup(app) {
     app.use(userRoutes.setup(router));
     logger.info('Setting up routes for user - End');
     /**
-     * Setting up route config for user
+     * Setting up route config for employees
      */
     logger.info('Setting up routes for employees - Begin');
     app.use(employeeRoutes.setup(router));

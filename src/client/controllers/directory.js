@@ -15,7 +15,9 @@ var TheHub;
                 }, function (error) {
                 });
             };
-            debugger;
+            this.showEmployee = function (employee) {
+                _this.selectedEmployee = employee;
+            };
             this.loadEmployees();
         }
         DirectoryController.$inject = ['$http'];
