@@ -8,12 +8,14 @@ module TheHub {
 
         static $inject = ['$mdSidenav', '$http', '$rootScope', '$location'];
 
-        menuItems: Array<{}> = new Array();
+        menu: Array<{}> = new Array();
 
         constructor(private $mdSidenav: angular.material.ISidenavService, private $http: ng.IHttpService, private $rootScope: RootScopeExt, private $location: ng.ILocationService) {
-            this.menuItems.push({ displayName: 'Employee Directory', url: '/directory' });
-            this.menuItems.push({ displayName: 'Blog', url: '/blog' });
+            let directoryMenu: {} = { label: 'Employee Directory', menuItems: [{ title: 'View Directory', icon: 'storage', url: '/directory' }] };
+            let accountMenu: {} = { label: 'My Account', menuItems: [{ title: 'My Profile', icon: 'account_circle', url: '/profile' }, { title: 'Logout', icon: 'settings_power', url: '/logout' }] };
 
+            this.menu.push(directoryMenu);
+            this.menu.push(accountMenu);
         }
 
         /**
@@ -42,7 +44,15 @@ module TheHub {
         }
 
         navigateTo = (url: string) => {
-            this.$location.url(url);
+            if (url == '/logout') {
+                this.logout();
+            } else {
+                this.$location.url(url);
+            }
+
+            if (!this.$mdSidenav('left').isLockedOpen()) {
+                this.$mdSidenav('left').close();
+            }
         }
 
         isItemActive = (url: string) => {

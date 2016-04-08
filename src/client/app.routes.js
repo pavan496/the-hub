@@ -11,15 +11,18 @@ var TheHub;
             }];
         //Configuring routes
         $routeProvider.when('/', {
+            title: 'Home',
             templateUrl: '/views/home.html',
             controller: 'HomeController',
             controllerAs: 'homeCtrl',
             resolve: accessResolver
         }).when('/login', {
+            title: 'Login',
             templateUrl: '/views/login.html',
             controller: 'LoginController',
             controllerAs: 'loginCtrl'
         }).when('/directory', {
+            title: 'Employee Directory',
             templateUrl: '/views/directory.html',
             controller: 'DirectoryController',
             controllerAs: 'dirCtrl',

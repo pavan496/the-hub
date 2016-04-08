@@ -1,27 +1,41 @@
-<div layout="row">
-    <div flex>
-        <md-list class="md-dense">
-            <md-subheader class="md-no-sticky"></md-subheader>
-            <md-list-item class="md-3-line" ng-repeat="employee in dirCtrl.employees" ng-click="dirCtrl.showEmployee(employee)">
-                <i class="material-icons md-avatar">account_circle</i>
-                <div class="md-list-item-text" layout="column">
-                    <h3>{{employee.name}}</h3>
-                    <h4>{{employee.employeeNo}}</h4>
-                    <p>{{employee.designation}}</p>
-                </div>
-            </md-list-item>
-        </md-list>
+<div layout="column">
+    <div>
+        <md-subheader class="md-no-sticky">
+            <md-input-container md-no-float class="md-block" layout="row">
+                <md-icon>
+                    <ng-md-icon icon="search"></ng-md-icon>
+                </md-icon>
+                <input placeholder="Search for Employees" autocomplete="off">
+            </md-input-container>
+        </md-subheader>
     </div>
-    <div layout-padding class="content-right">
-        <div layout="column" ng-cloak layout-align="center center">
-            <div ng-show="!dirCtrl.selectedEmployee" class="no-selection">
-                <p class="md-body-1">Select an employee to view further information</p>
-            </div>
-            <md-content class="md-no-momentum" ng-show="dirCtrl.selectedEmployee" layout-align="center center">
-                <h3 class="md-headline">{{dirCtrl.selectedEmployee.name}}<small> ({{dirCtrl.selectedEmployee.employeeNo}})</small></h3>
-                <p class="md-body-1">{{dirCtrl.selectedEmployee.designation}}</p>
-                
-            </md-content>
-        </div>
+    <div layout="row" ng-cloak layout-wrap class="employee-directory">
+        <md-card ng-repeat="employee in dirCtrl.employees">
+            <md-card-header>
+                <md-card-avatar>
+                    <user-avatar></user-avatar>
+                </md-card-avatar>
+                <md-card-header-text>
+                    <span class="md-title">{{employee.name}}</span>
+                    <span class="md-subhead">{{employee.designation}}</span>
+                </md-card-header-text>
+            </md-card-header>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="dirCtrl.showEmployee(employee)">View</md-button>
+            </md-card-actions>
+        </md-card>
     </div>
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+        <md-content layout-padding>
+            <form>
+                <md-input-container>
+                    <label for="testInput">Test input</label>
+                    <input type="text" id="testInput" ng-model="data" md-autofocus>
+                </md-input-container>
+            </form>
+            <md-button ng-click="close()" class="md-primary">
+                Close Sidenav Right
+            </md-button>
+        </md-content>
+    </md-sidenav>
 </div>

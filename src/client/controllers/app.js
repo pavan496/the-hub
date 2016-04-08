@@ -10,7 +10,7 @@ var TheHub;
             this.$http = $http;
             this.$rootScope = $rootScope;
             this.$location = $location;
-            this.menuItems = new Array();
+            this.menu = new Array();
             /**
              * Handler for button click to show/hide left menu.
              */
@@ -33,7 +33,15 @@ var TheHub;
                 });
             };
             this.navigateTo = function (url) {
-                _this.$location.url(url);
+                if (url == '/logout') {
+                    _this.logout();
+                }
+                else {
+                    _this.$location.url(url);
+                }
+                if (!_this.$mdSidenav('left').isLockedOpen()) {
+                    _this.$mdSidenav('left').close();
+                }
             };
             this.isItemActive = function (url) {
                 if (_this.$location.url() == url) {
@@ -43,8 +51,10 @@ var TheHub;
                     return '';
                 }
             };
-            this.menuItems.push({ displayName: 'Employee Directory', url: '/directory' });
-            this.menuItems.push({ displayName: 'Blog', url: '/blog' });
+            var directoryMenu = { label: 'Employee Directory', menuItems: [{ title: 'View Directory', icon: 'storage', url: '/directory' }] };
+            var accountMenu = { label: 'My Account', menuItems: [{ title: 'My Profile', icon: 'account_circle', url: '/profile' }, { title: 'Logout', icon: 'settings_power', url: '/logout' }] };
+            this.menu.push(directoryMenu);
+            this.menu.push(accountMenu);
         }
         AppController.$inject = ['$mdSidenav', '$http', '$rootScope', '$location'];
         return AppController;

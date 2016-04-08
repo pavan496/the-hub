@@ -28,6 +28,7 @@ app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angul
 app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-animate')));
 app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-aria')));
 app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-messages')));
+app.use('/angular', express.static(path_1.join(__dirname, '../node_modules/angular-material-icons')));
 //Initializing routes
 var routes = require('./routes/index');
 app.use('/', routes.setup(app));

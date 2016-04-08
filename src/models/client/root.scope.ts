@@ -4,7 +4,8 @@
 export interface RootScopeExt extends ng.IRootScopeService {
     //Data objects
     auth: Auth;
-
+    common: Common;
+    
     showToast(message: string);
 }
 
@@ -18,4 +19,11 @@ class Auth {
 
     //User Details
     user: any;
+}
+
+/**
+ * Class for holding common information
+ */
+class Common {
+    title: string;
 }

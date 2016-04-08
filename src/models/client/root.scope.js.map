@@ -1,1 +1,1 @@
-{"version":3,"file":"root.scope.js","sourceRoot":"","sources":["root.scope.ts"],"names":["Auth","Auth.constructor"],"mappings":"AAaA,AAHA;;GAEG;;IACHA;IAOAC,CAACA;IAADD,WAACA;AAADA,CAACA,AAPD,IAOC"}
+{"version":3,"file":"root.scope.js","sourceRoot":"","sources":["root.scope.ts"],"names":["Auth","Auth.constructor","Common","Common.constructor"],"mappings":"AAcA,AAHA;;GAEG;;IACHA;IAOAC,CAACA;IAADD,WAACA;AAADA,CAACA,AAPD,IAOC;AAKD,AAHA;;GAEG;;IACHE;IAEAC,CAACA;IAADD,aAACA;AAADA,CAACA,AAFD,IAEC"}

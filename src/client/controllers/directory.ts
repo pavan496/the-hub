@@ -9,9 +9,9 @@ module TheHub {
         employees: Array<Employee> = new Array<Employee>();
         selectedEmployee: Employee;
 
-        static $inject = ['$http']
+        static $inject = ['$http', '$mdSidenav']
 
-        constructor(private $http: ng.IHttpService) {
+        constructor(private $http: ng.IHttpService, private $mdSidenav: angular.material.ISidenavService) {
             this.loadEmployees();
         }
 
@@ -26,6 +26,8 @@ module TheHub {
 
         showEmployee = (employee: Employee) => {
             this.selectedEmployee = employee;
+            this.$mdSidenav('right').toggle();
+
         }
     }
 

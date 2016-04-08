@@ -13,27 +13,28 @@
 /* Login - End */
 
 /* Sidebar - Start*/
-md-sidenav md-list{
-    padding: 0px;
-}
-
 md-sidenav {
-    width:250px;
+  fill: #737373;
+}
+md-sidenav ng-md-icon {
+  position: relative;
+  top: 5px;
 }
 
-md-sidenav .active{
-    background-color:#6a81f7;
-    color:#FFFFFF;
+.user-avatar {
+  border-radius: 99%;
 }
+
+.md-toolbar-tools-bottom {
+  font-size: small;
+}
+.md-toolbar-tools-bottom :last-child {
+  opacity: 0.8;
+}
+
 /* Sidebar - End */
 
-/* Right content - Start */
-.content-right{
-    width:350px;
-    border-left:1px solid #6a81f7;
+.employee-directory md-card-avatar{
+    width:60px;
+    height:60px;
 }
-.content-right .no-selection{
-    padding-top:100px;
-}
-
-/* Right Content - End */

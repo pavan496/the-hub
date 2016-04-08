@@ -1,6 +1,10 @@
 module TheHub {
     "use strict";
 
+    interface IMyRoute extends ng.route.IRoute {
+        title: string;
+    }
+
     //Function to configure routes
     function routes($routeProvider: ng.route.IRouteProvider) {
 
@@ -12,16 +16,19 @@ module TheHub {
         }];
 
         //Configuring routes
-        $routeProvider.when('/', {
+        $routeProvider.when('/', <IMyRoute>{
+            title: 'Home',
             templateUrl: '/views/home.html',
             controller: 'HomeController',
             controllerAs: 'homeCtrl',
             resolve: accessResolver
-        }).when('/login', {
+        }).when('/login', <IMyRoute>{
+            title: 'Login',
             templateUrl: '/views/login.html',
             controller: 'LoginController',
             controllerAs: 'loginCtrl'
-        }).when('/directory', {
+        }).when('/directory', <IMyRoute>{
+            title: 'Employee Directory',
             templateUrl: '/views/directory.html',
             controller: 'DirectoryController',
             controllerAs: 'dirCtrl',

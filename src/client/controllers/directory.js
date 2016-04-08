@@ -4,9 +4,10 @@ var TheHub;
      * Home page controller.
      */
     var DirectoryController = (function () {
-        function DirectoryController($http) {
+        function DirectoryController($http, $mdSidenav) {
             var _this = this;
             this.$http = $http;
+            this.$mdSidenav = $mdSidenav;
             this.employees = new Array();
             this.loadEmployees = function () {
                 _this.$http.get('/secure/employees').then(function (response) {
@@ -17,10 +18,11 @@ var TheHub;
             };
             this.showEmployee = function (employee) {
                 _this.selectedEmployee = employee;
+                _this.$mdSidenav('right').toggle();
             };
             this.loadEmployees();
         }
-        DirectoryController.$inject = ['$http'];
+        DirectoryController.$inject = ['$http', '$mdSidenav'];
         return DirectoryController;
     })();
     TheHub.DirectoryController = DirectoryController;

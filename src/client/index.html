@@ -1,65 +1,49 @@
-<html>
+<html ng-app="TheHub" ng-controller="AppController as appCtrl">
 
 <head>
     <link href="angular/angular-material.min.css" rel="stylesheet" />
     <link href="views/stylesheets/default.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>The Hub</title>
+    <title ng-cloak>The Hub - {{common.title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body ng-app="TheHub">
-    <div id="sideNavContainer" ng-controller="AppController as appCtrl" layout="column" ng-cloak layout-fill>
-        <md-toolbar flex="none" ng-cloak>
-            <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" ng-show="auth.isAuthenticated" hide-gt-sm ng-click="appCtrl.openLeftMenu()">
-                    <i class="material-icons">menu</i>
-                </md-button>
-                The Hub
+<body>
+    <div id="sideNavContainer" layout="row" ng-cloak>
+        <md-sidenav ng-show="auth.isAuthenticated" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')">
+            <md-toolbar class="md-tall md-hue-2">
                 <span flex></span>
-                <md-menu ng-show="auth.isAuthenticated" md-position-mode="target-right target" ng-cloak>
-                    <md-button ng-click="$mdOpenMenu($event)">
-                        {{auth.user.name}}
+                <div layout="column" class="md-toolbar-tools-bottom inset">
+                    <user-avatar></user-avatar>
+                    <div layout-padding></div>
+                    <div>{{auth.user.name}}</div>
+                    <div>pavan@gmail.com</div>
+                </div>
+            </md-toolbar>
+            <md-list>
+                <md-subheader ng-repeat-start="item in appCtrl.menu">{{item.label}}</md-subheader>
+                <md-list-item ng-repeat="each in item.menuItems" ng-click="appCtrl.navigateTo(each.url)" layout="row" layout-align="start center">
+                    <div class="inset">
+                        <ng-md-icon icon="{{each.icon}}"></ng-md-icon>
+                    </div>
+                    <div class="inset">{{each.title}}</div>
+                </md-list-item>
+                <md-divider ng-repeat-end></md-divider>
+            </md-list>
+        </md-sidenav>
+        <div layout="column" class="relative" layout-fill role="main">
+            <md-toolbar ng-cloak>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" ng-show="auth.isAuthenticated" hide-gt-md ng-click="appCtrl.openLeftMenu()">
+                        <ng-md-icon icon="menu"></ng-md-icon>
                     </md-button>
-                    <md-menu-content>
-                        <md-menu-item>
-                            <md-button>
-                                <div layout="row" flex>
-                                    <p flex>My Profile</p>
-                                </div>
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button>
-                                <div layout="row" flex>
-                                    <p flex>Account Settings</p>
-                                </div>
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ng-click="appCtrl.logout()">
-                                <div layout="row" flex>
-                                    <p flex>Logout</p>
-                                </div>
-                            </md-button>
-                        </md-menu-item>
-                    </md-menu-content>
-                </md-menu>
-            </div>
-        </md-toolbar>
-        <md-content flex layout="row">
-            <md-sidenav ng-show="auth.isAuthenticated" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')"
-            md-disable-backdrop md-whiteframe="4" flex="none" ng-cloak>
-                <md-content layout="column">
-                    <md-list ng-repeat="item in appCtrl.menuItems">
-                        <md-list-item ng-click="appCtrl.navigateTo(item.url)" ng-class="appCtrl.isItemActive(item.url)">
-                            <p>{{item.displayName}}</p>
-                        </md-list-item>
-                    </md-list>
-                </md-content>
-            </md-sidenav>
-            <div ng-view flex></div>
-        </md-content>
+                    <span>The Hub - {{common.title}}</span>
+                </div>
+            </md-toolbar>
+            <md-content flex layout="row" md-scroll-y>
+                <div ng-view flex></div>
+            </md-content>
+        </div>
     </div>
 
     <script src="angular/angular.min.js" type="text/javascript"></script>
@@ -68,6 +52,7 @@
     <script src="angular/angular-aria.min.js" type="text/javascript"></script>
     <script src="angular/angular-messages.min.js" type="text/javascript"></script>
     <script src="angular/angular-material.min.js" type="text/javascript"></script>
+    <script src="angular/angular-material-icons.min.js"></script>
     <script src="app.module.js" type="text/javascript"></script>
     <script src="factories/user.factory.js" type="text/javascript"></script>
     <script src="app.routes.js" type="text/javascript"></script>
