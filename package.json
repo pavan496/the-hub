@@ -2,7 +2,7 @@
   "name": "the-hub",
   "version": "0.0.1",
   "description": "Employee Portal built on MEAN Stack and TypeScript",
-  "main": "src/app.js",
+  "main": "./src/www.js",
   "scripts": {
     "start": "node ./src/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"

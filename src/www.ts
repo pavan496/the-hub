@@ -5,12 +5,13 @@ import http = require('http');
 const debug = debugModule('node-express-typescript:server');
 
 // Get port from environment and store in Express.
-const port = normalizePort(process.env.PORT || '3000');
+const ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+const port = normalizePort(process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '3000');
 app.set('port', port);
 
 // create server and listen on provided port (on all network interfaces).
 const server = http.createServer(app);
-server.listen(port);
+server.listen(port, ipaddress);
 server.on('error', onError);
 server.on('listening', onListening);
 
