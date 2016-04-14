@@ -8,6 +8,7 @@ module TheHub {
 
         employees: Array<Employee> = new Array<Employee>();
         selectedEmployee: Employee;
+        searchQuery: string = '';
 
         static $inject = ['$http', '$mdSidenav']
 
@@ -16,7 +17,7 @@ module TheHub {
         }
 
         loadEmployees = () => {
-            this.$http.get('/secure/employees').then((response: ng.IHttpPromiseCallbackArg<Employee[]>) => {
+            this.$http.get('/secure/employees?q=' + this.searchQuery).then((response: ng.IHttpPromiseCallbackArg<Employee[]>) => {
                 this.employees = response.data;
                 console.log(response.data);
             }, (error: any) => {

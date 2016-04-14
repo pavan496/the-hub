@@ -1,12 +1,14 @@
 <div layout="column">
     <div>
         <md-subheader class="md-no-sticky">
-            <md-input-container md-no-float class="md-block" layout="row">
-                <md-icon>
-                    <ng-md-icon icon="search"></ng-md-icon>
-                </md-icon>
-                <input placeholder="Search for Employees" autocomplete="off">
-            </md-input-container>
+            <form novalidate ng-submit="dirCtrl.loadEmployees()">
+                <md-input-container md-no-float class="md-block" layout="row">
+                    <md-icon>
+                        <ng-md-icon icon="search"></ng-md-icon>
+                    </md-icon>
+                    <input placeholder="Search for Employees" autocomplete="off" ng-model="dirCtrl.searchQuery">
+                </md-input-container>
+            </form>
         </md-subheader>
     </div>
     <div layout="row" ng-cloak layout-wrap class="employee-directory">
@@ -25,17 +27,49 @@
             </md-card-actions>
         </md-card>
     </div>
-    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
-        <md-content layout-padding>
-            <form>
-                <md-input-container>
-                    <label for="testInput">Test input</label>
-                    <input type="text" id="testInput" ng-model="data" md-autofocus>
-                </md-input-container>
-            </form>
-            <md-button ng-click="close()" class="md-primary">
-                Close Sidenav Right
-            </md-button>
+    <md-button class="md-fab md-fab-bottom-right">
+        <ng-md-icon icon="person_add"></ng-md-icon>
+    </md-button>
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp employee-detail" md-component-id="right">
+        <md-content layout="column">
+            <md-toolbar class="md-tall md-hue-2">
+                <div layout="row" class="md-toolbar-tools-bottom inset">
+                    <user-avatar></user-avatar>
+                    <div layout-padding></div>
+                    <div layout="column">
+                        <h3>{{dirCtrl.selectedEmployee.name}}</h3>
+                        <div>{{dirCtrl.selectedEmployee.designation}}</div>
+                    </div>
+                </div>
+            </md-toolbar>
+            <md-card>
+                <md-card-content layout="column">
+                    <md-input-container md-no-float class="md-block" layout="row">
+                        <label>Email Address</label>
+                        <input autocomplete="off" ng-readonly="true" ng-value="dirCtrl.selectedEmployee.email">
+                    </md-input-container>
+                    <md-input-container md-no-float class="md-block" layout="row">
+                        <label>Mobile Number</label>
+                        <input autocomplete="off" ng-readonly="true" ng-model="dirCtrl.selectedEmployee.mobile">
+                    </md-input-container>
+                    <md-input-container md-no-float class="md-block" layout="row">
+                        <label>Telephone</label>
+                        <input autocomplete="off" ng-readonly="true" ng-value="dirCtrl.selectedEmployee.telephone">
+                    </md-input-container>
+                </md-card-content>
+            </md-card>
+            <md-card>
+                <md-card-content layout="column">
+                    <md-input-container md-no-float class="md-block" layout="row">
+                        <label>Employee No</label>
+                        <input autocomplete="off" ng-readonly="true" ng-model="dirCtrl.selectedEmployee.employeeNo">
+                    </md-input-container>
+                    <md-input-container md-no-float class="md-block" layout="row">
+                        <label>Designation</label>
+                        <input autocomplete="off" ng-readonly="true" ng-model="dirCtrl.selectedEmployee.designation">
+                    </md-input-container>
+                </md-card-content>
+            </md-card>
         </md-content>
     </md-sidenav>
 </div>

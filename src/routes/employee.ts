@@ -8,7 +8,7 @@ import {Employee} from '../models/employee';
 export function setup(router: express.Router) {
 
     logger.info('Setting up request mapping for for employees');
-    router.get('/secure/employees', (req: any, res: express.Response) => {
+    router.get('/secure/employees', (req: express.Request, res: express.Response) => {
         //Returning Dummy data for now.
         let employees: Array<Employee> = new Array<Employee>();
 

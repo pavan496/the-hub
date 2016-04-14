@@ -38,3 +38,14 @@ md-sidenav ng-md-icon {
     width:60px;
     height:60px;
 }
+
+.employee-directory md-card{
+    width:250px;
+}
+
+.employee-detail md-input-container{
+    margin:0px;
+}
+.employee-detail input{
+    font-size:85%;
+}

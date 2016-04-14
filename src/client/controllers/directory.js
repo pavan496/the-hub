@@ -9,8 +9,9 @@ var TheHub;
             this.$http = $http;
             this.$mdSidenav = $mdSidenav;
             this.employees = new Array();
+            this.searchQuery = '';
             this.loadEmployees = function () {
-                _this.$http.get('/secure/employees').then(function (response) {
+                _this.$http.get('/secure/employees?q=' + _this.searchQuery).then(function (response) {
                     _this.employees = response.data;
                     console.log(response.data);
                 }, function (error) {
