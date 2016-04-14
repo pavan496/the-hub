@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Employee Model
  */
@@ -12,6 +13,6 @@ var Employee = (function () {
         this.dateOfJoining = dateOfJoining;
     }
     return Employee;
-})();
+}());
 exports.Employee = Employee;
 //# sourceMappingURL=employee.js.map

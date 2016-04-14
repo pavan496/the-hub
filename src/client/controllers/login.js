@@ -1,3 +1,4 @@
+"use strict";
 var TheHub;
 (function (TheHub) {
     /**
@@ -36,7 +37,7 @@ var TheHub;
         };
         LoginController.$inject = ['$http', '$rootScope', '$location', '$routeParams'];
         return LoginController;
-    })();
+    }());
     TheHub.LoginController = LoginController;
     angular.module('TheHub').controller('LoginController', LoginController);
 })(TheHub || (TheHub = {}));

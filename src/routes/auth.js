@@ -1,3 +1,4 @@
+"use strict";
 var passport = require('passport');
 var logger = require('winston');
 var passportLocal = require('passport-local');

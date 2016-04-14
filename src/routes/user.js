@@ -1,3 +1,4 @@
+"use strict";
 var logger = require('winston');
 /**
  * Configuring REST URLs for user.

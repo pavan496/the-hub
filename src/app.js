@@ -1,4 +1,5 @@
 //Importing all the required modules.
+"use strict";
 var express = require('express');
 var bodyParser = require('body-parser');
 var path_1 = require('path');
@@ -6,6 +7,8 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 var passport = require('passport');
+//var connector = require("./server/db/connector");
+//import * as connector1 from "./server/db/connector/Connector";
 var app = express();
 //Initializing the modules
 app.use(bodyParser.json());
@@ -60,5 +63,6 @@ app.use(function (error, req, res, next) {
     });
     return null;
 });
-exports["default"] = app;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = app;
 //# sourceMappingURL=app.js.map

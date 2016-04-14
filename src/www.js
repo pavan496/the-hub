@@ -1,3 +1,4 @@
+"use strict";
 var app_1 = require('./app');
 var debugModule = require('debug');
 var http = require('http');
@@ -5,9 +6,9 @@ var debug = debugModule('node-express-typescript:server');
 // Get port from environment and store in Express.
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = normalizePort(process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || '3000');
-app_1["default"].set('port', port);
+app_1.default.set('port', port);
 // create server and listen on provided port (on all network interfaces).
-var server = http.createServer(app_1["default"]);
+var server = http.createServer(app_1.default);
 server.listen(port, ipaddress);
 server.on('error', onError);
 server.on('listening', onListening);

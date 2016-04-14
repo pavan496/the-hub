@@ -8,6 +8,11 @@ import * as cookieParser from 'cookie-parser';
 import * as expressSession from 'express-session';
 import * as passport from 'passport';
 import * as winston from 'winston';
+import * as mongoose from 'mongoose';
+import * as connector from './server/db/connector'
+//var connector = require("./server/db/connector");
+//import * as connector1 from "./server/db/connector/Connector";
+
 
 const app: express.Express = express();
 

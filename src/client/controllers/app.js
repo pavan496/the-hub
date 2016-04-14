@@ -1,3 +1,4 @@
+"use strict";
 var TheHub;
 (function (TheHub) {
     /**
@@ -58,7 +59,7 @@ var TheHub;
         }
         AppController.$inject = ['$mdSidenav', '$http', '$rootScope', '$location'];
         return AppController;
-    })();
+    }());
     TheHub.AppController = AppController;
     angular.module('TheHub').controller('AppController', AppController);
 })(TheHub || (TheHub = {}));

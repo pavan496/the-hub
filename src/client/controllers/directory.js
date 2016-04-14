@@ -1,3 +1,4 @@
+"use strict";
 var TheHub;
 (function (TheHub) {
     /**
@@ -24,7 +25,7 @@ var TheHub;
         }
         DirectoryController.$inject = ['$http', '$mdSidenav'];
         return DirectoryController;
-    })();
+    }());
     TheHub.DirectoryController = DirectoryController;
     angular.module('TheHub').controller('DirectoryController', DirectoryController);
 })(TheHub || (TheHub = {}));

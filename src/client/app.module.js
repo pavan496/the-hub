@@ -1,4 +1,5 @@
 "use strict";
+"use strict";
 var TheHub;
 (function (TheHub) {
     //Declaring the parent module

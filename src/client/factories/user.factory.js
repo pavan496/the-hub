@@ -1,3 +1,4 @@
+"use strict";
 var TheHub;
 (function (TheHub) {
     /**
@@ -43,7 +44,7 @@ var TheHub;
             return deferred.promise;
         };
         return UserFactory;
-    })();
+    }());
     function userFactory($http, $q, $rootScope) {
         return new UserFactory($http, $q, $rootScope);
     }

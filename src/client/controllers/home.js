@@ -7,7 +7,7 @@ var TheHub;
         function HomeController() {
         }
         return HomeController;
-    })();
+    }());
     TheHub.HomeController = HomeController;
     angular.module('TheHub').controller('HomeController', HomeController);
 })(TheHub || (TheHub = {}));
